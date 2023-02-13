@@ -1,3 +1,4 @@
+
 /*
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
@@ -19,10 +20,8 @@ Output: [1,2]
 
 */
 
-package main  
-
+package main
 import "fmt"
-
 
 
 func twoSum(numbers [] int , target int ) [] int{
@@ -31,9 +30,14 @@ func twoSum(numbers [] int , target int ) [] int{
   var newList [] int 
 
   for i:= 0; i < len( numbers ); i++{
-    if numbers[i] < target{
-      newList = append(numbers , numbers[i]);
-    }
+    for j:= 0; j < len( numbers ); j++{
+      
+      if numbers[i] < target{
+         newList = append(numbers , numbers[i]);
+      }
+    } 
+
+    
   }
 
 

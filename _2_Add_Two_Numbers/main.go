@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -22,38 +20,45 @@ func (l *LinkedList) add(value int) {
 	if l.head == nil {
 		l.head = newNode
 	} else {
-		iterator := l.head
-		for ; iterator.Next != nil; iterator = iterator.Next {
+		temp := l.head
+		for {
+			if temp.Next == nil {
+				break
+			}
+			temp = temp.Next
 		}
+		temp.Next = newNode
 	}
 
 	l.lenght++
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	temp := 0
+	var sumList *ListNode
 
-	suma := new(ListNode)
-	
 	for {
 		if l1 == nil || l2 == nil {
 			break
 		}
 
+		if l1.Val+l2.Val+temp == 10 {
+			temp = 1
+			sumList = &ListNode{0, sumList}
+		} else {
+			sumList = &ListNode{l1.Val + l2.Val + temp,sumList}
+			temp = 0
+		}
 
-		suma.Val = l1.Val + l2.Val
-		fmt.Println(suma , "XD")
-		
-		suma.Next = suma
-		
-		
 		l1 = l1.Next
 		l2 = l2.Next
 	}
-	return suma
+	
+	return sumList
 }
 
 func main() {
-	
+
 }
 
 /*

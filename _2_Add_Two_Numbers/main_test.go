@@ -8,7 +8,7 @@ import (
 
 func TestTwoNumbers(t *testing.T){
 
-	var l1 *LinkedList = &LinkedList{}
+	l1 := LinkedList{}
 	l1.add(2)
 	l1.add(4)
 	l1.add(3)
@@ -23,25 +23,34 @@ func TestTwoNumbers(t *testing.T){
 	
 
 	var data3 [] int = []int {7 , 0 , 8 } 
-	var data4 [3] int 
+	var data4 [4] int 
 
 	nums := addTwoNumbers(l1.head , l2.head);
 
 	var same bool  = true  
+	
+	i := 0
+	for {
+		//fmt.Println(nums)
+		if nums == nil {
+			break 
+		}
 
-	for i := 0 ; i < len(data3)  ; i++{
 		if data3[i] != nums.Val {
 			same = false
 		}
+
 		data4[i] = nums.Val
+		i++
 		nums = nums.Next
 	}
-
+	
 	if same == false {
-		t.Errorf("Bruto la lista esperada es  %d No ", nums.Val )
-	}
-
+		t.Errorf("Error La  Lista Esperada es: %d ", data3 )
+	}	
 	fmt.Println("Primera  " , data1 , "\nSegunda  ", data2 ,"\nEsperada ", data3, " \nResultado" , data4 )
+	
 
+	
 }
 

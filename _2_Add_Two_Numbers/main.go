@@ -39,6 +39,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			break
 		}
 
+
 		suma.Val = l1.Val + l2.Val
 		fmt.Println(suma , "XD")
 		

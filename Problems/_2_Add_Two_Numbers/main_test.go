@@ -6,9 +6,6 @@ import (
 )
 // This is a test for the function 
 
-/*
-
-
 func TestTwoNumbers(t *testing.T){
 
 	l1 := LinkedList{}
@@ -103,7 +100,7 @@ func TestTwoNumbers2(t *testing.T){
 		
 }
 
-*/
+
 
 func TestToReverse(t *testing.T){
 	

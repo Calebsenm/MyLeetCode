@@ -1,5 +1,6 @@
 package main
 
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -34,30 +35,27 @@ func (l *LinkedList) add(value int) {
 
 // This function is for reverse the linkedList
 
-func reverseLinkedList(list *ListNode) *ListNode {
+func reverseLinkedList(lst *ListNode) *ListNode {
 	var reversed *ListNode
-	toReverseNode := list
-	newReversed := toReverseNode
+	theList := lst
 
 	for {
-	
-		if toReverseNode.Next == nil {
+		if theList == nil {
 			break
 		}
 
-		nexNode := toReverseNode.Next
-		newNode := &ListNode{Val: toReverseNode.Next.Val}
-		newReversed.Next = newNode
-		newNode.Next = nexNode 
-
-		if reversed == nil{
+		newNode := &ListNode{Val: theList.Val}
+		
+		if reversed == nil {
 			reversed = newNode
-		}else {
-			reversed = newReversed
+		} else {
+			current := reversed
+			newN := newNode
+			newN.Next = current
+			reversed = newN
 		}
-	
-		toReverseNode = toReverseNode.Next
 
+        theList = theList.Next
 	}
 
 	return reversed
@@ -67,19 +65,23 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	temp := 0
 	var current *ListNode
 
+	theL1 := reverseLinkedList(l1)
+	theL2 := reverseLinkedList(l2)
+
+
 	for {
 		newNode := &ListNode{}
 
-		if l1 == nil || l2 == nil {
+		if theL1 == nil || theL2 == nil {
 			break
 		}
 
-		if l1.Val+l2.Val+temp >= 10 {
-			temp = l1.Val + l2.Val + temp
-			newNode = &ListNode{Val: 0}
+		if theL1.Val+theL2.Val+temp >= 10 {
+			newNode = &ListNode{Val: theL1.Val+theL2.Val  -10 }
+			temp = 1
 		} else {
 
-			newNode = &ListNode{Val: temp - l1.Val + l2.Val}
+			newNode = &ListNode{Val:  theL1.Val + theL2.Val + temp}
 			temp = 0
 		}
 
@@ -97,9 +99,15 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			current = current1
 		}
 
-		l1 = l1.Next
-		l2 = l2.Next
-
+		// 1 2 3 4
+		theL1 = theL1.Next
+		// 5 3 
+		if theL2.Next == nil {
+			theL2.Val = 0
+		}	else {
+			theL2 = theL2.Next
+		}
+		
 		//fmt.Println(current.Next)
 	}
 

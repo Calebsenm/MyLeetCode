@@ -8,21 +8,21 @@ import (
 
 func TestTwoNumbers(t *testing.T){
 
-	l1 := LinkedList{}
-	l1.add(2)
-	l1.add(9)
-	l1.add(4)
-
 	l2 := LinkedList{}
-	l2.add(1)
-	l2.add(2)
+	l2.add(9)
+	l2.add(9)
+	l2.add(4)
 
-	var data1 [] int = []int{ 2 , 9 , 4 }
-	var data2 [] int = []int{ 1 , 2 }
+	l1 := LinkedList{}
+	l1.add(1)
+	l1.add(2)
+
+	var data1 [] int = []int{ 9 , 9 , 4 }
+	var data2 [] int = []int{     1 , 2 }
 	
 
-	var data3 [] int = []int {6 , 0 , 3 } 
-	var data4 [3] int 
+	var data3 [] int = []int {6 , 0 , 0 , 1 } 
+	var data4 [4] int 
 
 	nums := addTwoNumbers(l1.head , l2.head);
 

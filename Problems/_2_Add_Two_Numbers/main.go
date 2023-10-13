@@ -1,6 +1,5 @@
 package main
 
-
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -45,7 +44,7 @@ func reverseLinkedList(lst *ListNode) *ListNode {
 		}
 
 		newNode := &ListNode{Val: theList.Val}
-		
+
 		if reversed == nil {
 			reversed = newNode
 		} else {
@@ -55,7 +54,7 @@ func reverseLinkedList(lst *ListNode) *ListNode {
 			reversed = newN
 		}
 
-        theList = theList.Next
+		theList = theList.Next
 	}
 
 	return reversed
@@ -65,9 +64,26 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	temp := 0
 	var current *ListNode
 
-	theL1 := reverseLinkedList(l1)
-	theL2 := reverseLinkedList(l2)
+	newl1 := l1
+	newl2 := l2
 
+	for {
+		if newl1.Next == nil {
+			newl1 = l2
+			newl2 = l1
+			break
+		} else if newl2.Next == nil {
+			newl1 = l1
+			newl2 = l2
+			break
+		}
+
+		newl1 = newl1.Next
+		newl2 = newl2.Next
+	}
+
+	theL1 := reverseLinkedList(newl1)
+	theL2 := reverseLinkedList(newl2)
 
 	for {
 		newNode := &ListNode{}
@@ -76,12 +92,12 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			break
 		}
 
-		if theL1.Val+theL2.Val+temp >= 10 {
-			newNode = &ListNode{Val: theL1.Val+theL2.Val  -10 }
+		sum := theL1.Val + theL2.Val
+		if sum+temp >= 10 {
+			newNode = &ListNode{Val: sum + temp - 10}
 			temp = 1
 		} else {
-
-			newNode = &ListNode{Val:  theL1.Val + theL2.Val + temp}
+			newNode = &ListNode{Val: sum + temp}
 			temp = 0
 		}
 
@@ -99,16 +115,34 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			current = current1
 		}
 
-		// 1 2 3 4
-		theL1 = theL1.Next
-		// 5 3 
+		if theL1.Next == nil {
+			theL1.Val = 0
+		} else {
+			theL1 = theL1.Next
+		}
+
 		if theL2.Next == nil {
 			theL2.Val = 0
-		}	else {
+		} else {
 			theL2 = theL2.Next
 		}
-		
+
+		if theL1.Next == nil && theL1.Val == 0 && theL2.Next == nil && theL2.Val == 0 {
+			break
+		}
 		//fmt.Println(current.Next)
+	}
+
+	if temp == 1 {
+		theLastest := &ListNode{Val: temp}
+		current1 := current
+
+		for current.Next != nil {
+			current = current.Next
+		}
+		current.Next = theLastest
+		current = current1
+
 	}
 
 	return current
@@ -128,9 +162,8 @@ Explanation: 342 + 465 = 807.
 
 */
 
-
 /*
-Solucion 
+Solucion
 
 a = 2 -> 9 -> 4
 b = 1 -> 2
@@ -142,17 +175,17 @@ b = 1 -> 2
 
 for:
 
-if a != null: 
+if a != null:
 	val = a + b
 	if val >= 10:
     	rest = val -10
 		val =  rest
 
-if a == null: 
+if a == null:
 	val = a + b
 	if val >= 10:
     	rest = val -10
 		val =  rest
 
-nodo -> = val 
+nodo -> = val
 */

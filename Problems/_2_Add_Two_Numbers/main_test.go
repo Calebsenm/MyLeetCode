@@ -8,14 +8,14 @@ import (
 
 func TestTwoNumbers(t *testing.T){
 
-	l2 := LinkedList{}
-	l2.add(9)
-	l2.add(9)
-	l2.add(4)
-
 	l1 := LinkedList{}
-	l1.add(1)
-	l1.add(2)
+	l1.add(9)
+	l1.add(9)
+	l1.add(4)
+
+	l2 := LinkedList{}
+	l2.add(1)
+	l2.add(2)
 
 	var data1 [] int = []int{ 9 , 9 , 4 }
 	var data2 [] int = []int{     1 , 2 }
@@ -54,21 +54,20 @@ func TestTwoNumbers(t *testing.T){
 func TestTwoNumbers2(t *testing.T){
 
 	l1 := LinkedList{}
-	l1.add(2)
-	l1.add(4)
-	l1.add(3)
+	l1.add(9)
+	l1.add(9)
+	l1.add(1)
 	
 
 	l2 := LinkedList{}
-	l2.add(5)
-	l2.add(6)
-	l2.add(4)
-
-	var data1 [] int = []int{ 2 , 4 , 3 }
-	var data2 [] int = []int{ 5 , 6 , 4 }
+	l2.add(1)
 	
 
-	var data3 [] int = []int {7 , 0, 8 } 
+	var data1 [] int = []int{ 9 , 9 , 1 }
+	var data2 [] int = []int{ 1 }
+	
+
+	var data3 [] int = []int {0 , 0,  2 } 
 	var data4 [3] int 
 
 	nums := addTwoNumbers(l1.head , l2.head);

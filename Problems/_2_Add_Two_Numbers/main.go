@@ -33,7 +33,6 @@ func (l *LinkedList) add(value int) {
 }
 
 // This function is for reverse the linkedList
-
 func reverseLinkedList(lst *ListNode) *ListNode {
 	var reversed *ListNode
 	theList := lst
@@ -64,26 +63,49 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	temp := 0
 	var current *ListNode
 
+	if l1.Next == nil && l1.Val == 0{
+		current = l2
+	}else{
+
+
+
 	newl1 := l1
 	newl2 := l2
 
 	for {
+
 		if newl1.Next == nil {
 			newl1 = l2
 			newl2 = l1
 			break
 		} else if newl2.Next == nil {
-			newl1 = l1
-			newl2 = l2
+			newl1 = reverseLinkedList(l1)
+			newl2 = reverseLinkedList(l2)
+			break 
+
+		}else{
 			break
 		}
 
-		newl1 = newl1.Next
-		newl2 = newl2.Next
+		//newl1 = newl1.Next
+		//newl2 = newl2.Next
 	}
 
-	theL1 := reverseLinkedList(newl1)
-	theL2 := reverseLinkedList(newl2)
+	theL1 := newl1
+	theL2 := newl2
+
+	if newl2.Next == nil {
+		theL1 = reverseLinkedList(newl1)
+		theL2 = reverseLinkedList(newl2)
+	}else {
+		theL2 = newl2
+		theL1 = newl1
+	}
+
+	if l1.Next == nil{
+		theL2 = l2 
+		theL1 = l1
+	}	
 
 	for {
 		newNode := &ListNode{}
@@ -144,7 +166,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		current = current1
 
 	}
-
+	}
 	return current
 }
 
@@ -173,19 +195,5 @@ b = 1 -> 2
 
 
 
-for:
 
-if a != null:
-	val = a + b
-	if val >= 10:
-    	rest = val -10
-		val =  rest
-
-if a == null:
-	val = a + b
-	if val >= 10:
-    	rest = val -10
-		val =  rest
-
-nodo -> = val
 */

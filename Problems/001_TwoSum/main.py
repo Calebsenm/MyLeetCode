@@ -60,17 +60,3 @@ print( ListaNumeros)
 
 print(Fnumero(ListaNumeros , numeroBuscar ))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 const std = @import("std");
 
-fn twoSum(num: [4]u8, target: u8) [2]u8 {
+fn twoSum(num: []const u8, target: u8) [2]u8 {
     var indNum: [2]u8 = [2]u8{ 0, 0 };
 
     var i: u8 = 0;
@@ -21,9 +21,8 @@ fn twoSum(num: [4]u8, target: u8) [2]u8 {
 }
 
 pub fn main() void {
-    const numbers = [_]u8{ 2, 7, 11, 15 };
+    const numbers = [_]u8{ 2, 7, 11, 15, 1, 5, 6, 2 };
     const target = 9;
-    const result = twoSum(numbers, target);
-
+    const result = twoSum(numbers[0..numbers.len], target);
     std.debug.print("{any}", .{result});
 }

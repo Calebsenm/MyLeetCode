@@ -1,3 +1,2 @@
-This is a respo for practice code problems and learn about DSA In golang o other languages
-
+Respo for practice code problems and learn about DSA  i do not know ;)
 

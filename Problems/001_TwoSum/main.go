@@ -26,9 +26,8 @@ package main
 
 import "fmt"
 
-
 func twoSum(nums []int, target int) [][]int {
-
+	
 	var newList [][]int
   
 	for i := 0; i < len(nums); i++ {
@@ -50,4 +49,6 @@ func main() {
 	numbers := []int{-2, -2}
 	fmt.Println(twoSum(numbers, -4))
 }
+
+
 

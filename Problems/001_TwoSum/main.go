@@ -50,5 +50,3 @@ func main() {
 	fmt.Println(twoSum(numbers, -4))
 }
 
-
-
